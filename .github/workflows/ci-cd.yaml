@@ -21,5 +21,5 @@ jobs:
         with:
           target_branch: gh_pages
           build_dir: build
-          env:
-            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        env:
+          GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
