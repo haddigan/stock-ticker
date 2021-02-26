@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  build-test-deploy:
+  deploy-client:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,9 +13,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "10.x"
-      - run: npm install
-      - run: npm run build
-      - run: npm test
+      - name: Install
+        working-directory: ./client
+        run: npm install
+      - name: Build
+        working-directory: ./client
+        run: npm run build
+      - name: Build
+        working-directory: ./client
+        run: npm test
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:
