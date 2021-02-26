@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 
 const URI = `${process.env.REACT_APP_API_URI}`;
 
-console.log(URI);
-
-export const useStockApi = () => {
+export const useStockApi = (symbol) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isIdle, setIsIdle] = useState(true);
@@ -15,7 +13,7 @@ export const useStockApi = () => {
       setIsIdle(false);
       setIsLoading(true);
       try {
-        const result = await fetch(URI);
+        const result = await fetch(`${URI}/${symbol}`);
         const json = await result.json();
         setResponse(json);
         setIsLoading(false);
@@ -27,7 +25,7 @@ export const useStockApi = () => {
       }
     };
     getApi();
-  }, []);
+  }, [symbol]);
 
   return { response, error, isLoading, isIdle };
 };

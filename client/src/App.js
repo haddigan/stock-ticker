@@ -1,6 +1,6 @@
 import { useStockApi } from "./useStockApi";
 function App() {
-  const { response, isLoading, isIdle, error } = useStockApi();
+  const { response, isLoading, isIdle, error } = useStockApi("GME");
   return (
     <>
       {isIdle && <div>Hello world</div>}

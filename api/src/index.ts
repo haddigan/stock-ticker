@@ -11,10 +11,11 @@ const API_URI = process.env.ALPHAVANTAGE_API_URI;
 
 app.use(cors());
 
-app.use("/api", async (_, res) => {
+app.use("/api/:symbol", async (req, res) => {
+  const symbol = req.params.symbol;
   try {
     const apiData = await fetch(
-      `${API_URI}?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${API_KEY}`
+      `${API_URI}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${API_KEY}`
     );
     const apiJson = await apiData.json();
     res.json(apiJson);
