@@ -4,6 +4,28 @@ on:
     branches:
       - main
 jobs:
+  deploy-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set-Up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - name: Install
+        working-directory: ./api
+        run: npm install
+      - name: Build
+        working-directory: ./api
+        run: npm run build
+      - name: Test
+        working-directory: ./api
+        run: npm test
+      - name: Deploy
+        working-directory: ./api
+        run: |
+          echo "TODO: deploy to server :)"
   deploy-client:
     runs-on: ubuntu-latest
     steps:
