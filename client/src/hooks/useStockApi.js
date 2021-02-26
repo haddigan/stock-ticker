@@ -13,7 +13,7 @@ export const useStockApi = (symbol) => {
       setIsIdle(false);
       setIsLoading(true);
       try {
-        const result = await fetch(`${URI}/${symbol}`);
+        const result = await fetch(`${URI}/overview/${symbol}`);
         const json = await result.json();
         setResponse(json);
         setIsLoading(false);

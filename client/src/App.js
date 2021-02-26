@@ -1,12 +1,9 @@
-import { useStockApi } from "./useStockApi";
+import { StockSelector } from "./components/StockSelector";
+
 function App() {
-  const { response, isLoading, isIdle, error } = useStockApi("GME");
   return (
     <>
-      {isIdle && <div>Hello world</div>}
-      {isLoading && <div>Loading...</div>}
-      {response && <div>{JSON.stringify(response)}</div>}
-      {!!error && <div>{error}</div>}
+      <StockSelector />
     </>
   );
 }
