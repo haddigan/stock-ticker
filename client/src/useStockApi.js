@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-const KEY = process.env.REACT_APP_ALPHAVANTAGE_API_KEY;
-const URI = `${process.env.REACT_APP_APLHAVANTAGE_API_URI}/?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${KEY}`;
+
+const URI = `${process.env.REACT_APP_API_URI}`;
 
 console.log(URI);
 
