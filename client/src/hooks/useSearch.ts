@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
+import {
+  SearchResult,
+  SimplifiedResult,
+  SYMBOL_KEY,
+  NAME_KEY,
+} from "../types/searchResponse";
+import { RequestStatus } from "../types/requestStatus";
 
 const URI = `${process.env.REACT_APP_API_URI}`;
 
-const SYMBOL_KEY = "1. symbol";
-const NAME_KEY = "2. name";
-
-const formatResults = (results) => {
+const formatResults = (results: Array<SearchResult>): SimplifiedResult[] => {
   return results.map((result) => {
     const symbol = result[SYMBOL_KEY];
     const name = result[NAME_KEY];
@@ -13,11 +17,13 @@ const formatResults = (results) => {
   });
 };
 
-export const useSearch = (term) => {
+export const useSearch = (
+  term: string
+): [SimplifiedResult[] | null, Error | null, RequestStatus] => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isIdle, setIsIdle] = useState(true);
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState<SimplifiedResult[] | null>(null);
 
   useEffect(() => {
     if (!term) return;

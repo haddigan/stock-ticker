@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useDebounce, useSearch } from "../hooks";
+import { useDebounce, useSearch } from "../../hooks";
+import { SelectorList } from "./SelectorList";
 
 export const StockSelector = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,12 +16,7 @@ export const StockSelector = () => {
         value={searchQuery}
         placeholder="Search by company name or symbol"
       />
-      <ul>
-        {searchResults &&
-          searchResults.map(({ name, symbol }) => {
-            return <li key={name}>{symbol}</li>;
-          })}
-      </ul>
+      <SelectorList searchResults={searchResults} />
     </div>
   );
 };
