@@ -15,7 +15,6 @@ router.get("/search/:term", async (req, res) => {
   // https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=BA&apikey=demo
   const term = req.params.term;
   const endpoint = `${API_URI}?function=SYMBOL_SEARCH&keywords=${term}&apikey=${API_KEY}`;
-
   try {
     const apiData = await fetch(endpoint);
     const apiJson = await apiData.json();
