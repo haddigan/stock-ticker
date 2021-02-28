@@ -4,7 +4,7 @@ import { SelectorList } from "./SelectorList";
 
 export const StockSelector = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const debouncedQuery = useDebounce(searchQuery, 500);
+  const debouncedQuery = useDebounce<string>(searchQuery, 500);
 
   const [searchResults] = useSearch(debouncedQuery);
 
