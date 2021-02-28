@@ -12,7 +12,12 @@ export const SelectorList = ({
   onSelectStock,
 }: SelectorListProps) => {
   const hasResults = Array.isArray(searchResults) && searchResults.length;
-  return !hasResults ? null : (
+
+  return !hasResults ? (
+    <div className={styles.selectorList}>
+      <p className={styles.selectorListItem}>No Results Found!</p>
+    </div>
+  ) : (
     <ul className={styles.selectorList}>
       {searchResults &&
         searchResults.map(({ name, symbol }) => {
