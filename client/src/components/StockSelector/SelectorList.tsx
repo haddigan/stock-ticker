@@ -1,9 +1,9 @@
-import { SimplifiedResult } from "../../types/searchResponse";
+import { SearchResult } from "../../types/searchResult";
 
 import styles from "./StockSelector.module.css";
 
 type SelectorListProps = {
-  searchResults: SimplifiedResult[] | null;
+  searchResults: SearchResult[] | null;
   onSelectStock: any;
 };
 

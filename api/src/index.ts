@@ -3,6 +3,7 @@ import cors from "cors";
 
 import { SYMBOL_SEARCH, GLOBAL_QUOTE, OVERVIEW } from "./app/constants";
 import { makeApiRequest } from "./app/makeApiRequest";
+import { formatSearchResults } from "./app/formatSearchResults";
 
 const PORT = 3001;
 const app = express();
@@ -14,8 +15,9 @@ app.use(cors());
 router.get("/search/:term", async (req, res) => {
   const term = req.params.term;
   try {
-    const response = await makeApiRequest(SYMBOL_SEARCH, term);
-    res.json(response);
+    const rawResponse = await makeApiRequest(SYMBOL_SEARCH, term);
+    const formattedResponse = formatSearchResults(rawResponse.bestMatches);
+    res.json(formattedResponse);
   } catch (err) {
     res.json({ error: err.message });
   }

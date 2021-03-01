@@ -1,6 +1,13 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useSearch } from "./useSearch";
-import * as searchMock from "../mock/searchResults.json";
+
+const searchMock = [
+  { symbol: "AMC", name: "AMC Entertainment Holdings Inc - Class A" },
+  {
+    symbol: "AMCA",
+    name: "iShares Russell 1000 Pure U.S. Revenue ETF",
+  },
+];
 
 const mockFetch = (mockData: any) => {
   global.fetch = jest.fn().mockImplementation(() => {
@@ -55,38 +62,6 @@ describe("useSearch Hook", () => {
           Object {
             "name": "iShares Russell 1000 Pure U.S. Revenue ETF",
             "symbol": "AMCA",
-          },
-          Object {
-            "name": "Applied Micro Circuits Corp",
-            "symbol": "AMCC",
-          },
-          Object {
-            "name": "Andatee China Marine Fuel Ser Corp",
-            "symbol": "AMCF",
-          },
-          Object {
-            "name": "Albemarle Corporation",
-            "symbol": "AMC.FRK",
-          },
-          Object {
-            "name": "Amur Minerals Corporation",
-            "symbol": "AMC.LON",
-          },
-          Object {
-            "name": "Arizona Metals Corp",
-            "symbol": "AMC.TRV",
-          },
-          Object {
-            "name": "AMEC PLC ORD",
-            "symbol": "AMCBF",
-          },
-          Object {
-            "name": "Amcor Plc",
-            "symbol": "AMCCF",
-          },
-          Object {
-            "name": "AMERICAN BEACON MIDCAP VALUE FUND C CLASS",
-            "symbol": "AMCCX",
           },
         ],
         null,
