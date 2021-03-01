@@ -1,4 +1,4 @@
-import { Quote } from "../../types/quote";
+import { Quote } from "../../types/stockQuote.types";
 import styles from "./StockDetails.module.css";
 
 type StockDetailsViewProps = {

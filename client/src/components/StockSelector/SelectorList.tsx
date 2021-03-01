@@ -1,4 +1,4 @@
-import { SearchResult } from "../../types/searchResult";
+import { SearchResult } from "../../types/searchResult.types";
 
 import styles from "./StockSelector.module.css";
 

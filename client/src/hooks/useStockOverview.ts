@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RequestStatus } from "../types/requestStatus";
+import { RequestStatus } from "../types/requestStatus.types";
 
 const URI = `${process.env.REACT_APP_API_URI}`;
 
