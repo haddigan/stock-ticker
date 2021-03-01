@@ -4,13 +4,18 @@ import { SelectorList } from "./SelectorList";
 
 import styles from "./StockSelector.module.css";
 
-export const StockSelector = () => {
+export const StockSelector = ({
+  onSelectStock,
+}: {
+  onSelectStock: (symbol: string) => void;
+}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedQuery = useDebounce<string>(searchQuery, 500);
 
   const [searchResults] = useSearch(debouncedQuery);
 
-  const handleSelectStock = () => {
+  const handleSelectStock = (symbol: string): void => {
+    onSelectStock(symbol);
     setSearchQuery("");
   };
 

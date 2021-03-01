@@ -21,12 +21,13 @@ export const SelectorList = ({
     <ul className={styles.selectorList}>
       {searchResults &&
         searchResults.map(({ name, symbol }) => {
+          const handleSelectStock = () => onSelectStock(symbol);
           return (
             <SelectorListItem
               key={symbol}
               name={name}
               symbol={symbol}
-              onSelectStock={onSelectStock}
+              onSelectStock={handleSelectStock}
             />
           );
         })}
