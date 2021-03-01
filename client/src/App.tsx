@@ -14,7 +14,10 @@ function App() {
   return (
     <main>
       <h1>Stock Comparison</h1>
-      <StockSelector onSelectStock={handleSelectStock} />
+      <StockSelector
+        disabled={selectedStocks.length === 3}
+        onSelectStock={handleSelectStock}
+      />
       <section className={styles.comparisonList}>
         {selectedStocks.map((symbol) => {
           return <StockDetails key={symbol} symbol={symbol} />;

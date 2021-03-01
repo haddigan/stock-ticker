@@ -6,8 +6,10 @@ import styles from "./StockSelector.module.css";
 
 export const StockSelector = ({
   onSelectStock,
+  disabled = false,
 }: {
   onSelectStock: (symbol: string) => void;
+  disabled?: boolean;
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedQuery = useDebounce<string>(searchQuery, 500);
@@ -18,6 +20,7 @@ export const StockSelector = ({
     onSelectStock(symbol);
     setSearchQuery("");
   };
+  console.log(disabled);
 
   return (
     <div className={styles.stockSelector}>
@@ -27,6 +30,7 @@ export const StockSelector = ({
         onChange={(e) => setSearchQuery(e.target.value)}
         value={searchQuery}
         placeholder="Search by company name or symbol"
+        disabled={disabled}
       />
       {searchQuery && searchResults && (
         <SelectorList
