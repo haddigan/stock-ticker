@@ -7,7 +7,7 @@
     "start": "npm run build && export NODE_ENV=production && node ./lib/index.js",
     "dev": "env-cmd -f ../.env.development.local nodemon ./src/index.ts",
     "build": "tsc --project ./",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -20,10 +20,13 @@
   "devDependencies": {
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.20",
     "@types/node": "^14.14.31",
     "@types/node-fetch": "^2.5.8",
     "env-cmd": "^10.1.0",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7",
+    "ts-jest": "^26.5.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
   }
