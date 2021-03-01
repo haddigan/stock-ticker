@@ -1,7 +1,13 @@
 import { StockDetailsView } from "./StockDetailsView";
 import { useStockOverview, useStockQuote } from "../../hooks";
 
-export const StockDetails = ({ symbol }: { symbol: string }) => {
+export const StockDetails = ({
+  symbol,
+  onRemoveStock,
+}: {
+  symbol: string;
+  onRemoveStock: any;
+}) => {
   const [stockOverview, , stockOverviewStatus] = useStockOverview(symbol);
   const [stockQuote, , stockQuoteStatus] = useStockQuote(symbol);
   const {
@@ -23,7 +29,12 @@ export const StockDetails = ({ symbol }: { symbol: string }) => {
       {isLoading && <div>Loading...</div>}
       {hasError && <div>Error</div>}
       {!isLoading && !hasError && (
-        <StockDetailsView symbol={symbol} name={name} quote={stockQuote} />
+        <StockDetailsView
+          symbol={symbol}
+          name={name}
+          quote={stockQuote}
+          onRemoveStock={onRemoveStock}
+        />
       )}
     </>
   );

@@ -11,6 +11,12 @@ function App() {
     setSelectedStocks((selected) => [...selected, symbol]);
   };
 
+  const handleRemoveStock = (symbol: string) => {
+    setSelectedStocks((selected) => {
+      return selected.filter((chosenSymbol) => symbol !== chosenSymbol);
+    });
+  };
+
   return (
     <main>
       <h1>Stock Comparison</h1>
@@ -20,7 +26,14 @@ function App() {
       />
       <section className={styles.comparisonList}>
         {selectedStocks.map((symbol) => {
-          return <StockDetails key={symbol} symbol={symbol} />;
+          const handleRemove = () => handleRemoveStock(symbol);
+          return (
+            <StockDetails
+              key={symbol}
+              symbol={symbol}
+              onRemoveStock={handleRemove}
+            />
+          );
         })}
       </section>
     </main>

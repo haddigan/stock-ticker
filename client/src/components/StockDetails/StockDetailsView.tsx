@@ -5,12 +5,14 @@ type StockDetailsViewProps = {
   symbol: string;
   name: string;
   quote: Quote;
+  onRemoveStock: any;
 };
 
 export const StockDetailsView = ({
   symbol,
   name,
   quote,
+  onRemoveStock,
 }: StockDetailsViewProps) => {
   const { high, low, changePercent, price } = quote || {};
 
@@ -25,7 +27,7 @@ export const StockDetailsView = ({
         <div>Low: {low}</div>
       </div>
       <div className={styles.closeButton}>
-        <button>❌</button>
+        <button onClick={onRemoveStock}>❌</button>
       </div>
     </section>
   );

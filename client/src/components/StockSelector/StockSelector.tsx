@@ -4,13 +4,15 @@ import { SelectorList } from "./SelectorList";
 
 import styles from "./StockSelector.module.css";
 
+type StockSelectorProps = {
+  onSelectStock: (symbol: string) => void;
+  disabled?: boolean;
+};
+
 export const StockSelector = ({
   onSelectStock,
   disabled = false,
-}: {
-  onSelectStock: (symbol: string) => void;
-  disabled?: boolean;
-}) => {
+}: StockSelectorProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedQuery = useDebounce<string>(searchQuery, 500);
 
@@ -20,7 +22,6 @@ export const StockSelector = ({
     onSelectStock(symbol);
     setSearchQuery("");
   };
-  console.log(disabled);
 
   return (
     <div className={styles.stockSelector}>
