@@ -25,6 +25,20 @@ router.get("/search/:term", async (req, res) => {
 });
 
 router.get("/overview/:symbol", async (req, res) => {
+  // https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo
+  const symbol = req.params.symbol;
+  const endpoint = `${API_URI}?function=OVERVIEW&symbol=${symbol}&apikey=${API_KEY}`;
+
+  try {
+    const apiData = await fetch(endpoint);
+    const apiJson = await apiData.json();
+    res.json(apiJson);
+  } catch (err) {
+    res.json({ error: err.message });
+  }
+});
+
+router.get("/quote/:symbol", async (req, res) => {
   // https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo
   const symbol = req.params.symbol;
   const endpoint = `${API_URI}?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;

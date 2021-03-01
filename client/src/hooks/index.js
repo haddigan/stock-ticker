@@ -1,3 +1,4 @@
 export { useDebounce } from "./useDebounce";
 export { useSearch } from "./useSearch";
-export { useStockApi } from "./useStockApi";
+export { useStockOverview } from "./useStockOverview";
+export { useStockQuote } from "./useStockQuote";

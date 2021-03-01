@@ -1,0 +1,19 @@
+.stockDetails {
+  display: flex;
+  flex-basis: 33.333%;
+  justify-content: center;
+  padding: 1em;
+}
+
+.stockDetails + .stockDetails {
+  border-left: 1px solid gray;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.closeButton {
+  text-align: center;
+  flex-basis: 30px;
+}
