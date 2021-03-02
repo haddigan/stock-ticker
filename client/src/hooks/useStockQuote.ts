@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { RequestStatus } from "../types/requestStatus.types";
+import { Quote } from "../types/stockQuote.types";
 
 const URI = `${process.env.REACT_APP_API_URI}`;
 
-export const useStockQuote = (
+type UseStockQuote = (
   symbol: string
-): [any, Error | null, RequestStatus] => {
+) => [Quote | null, Error | null, RequestStatus];
+
+export const useStockQuote: UseStockQuote = (symbol) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isIdle, setIsIdle] = useState(true);
