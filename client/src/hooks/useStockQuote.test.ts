@@ -74,4 +74,18 @@ describe("useQuote Hook", () => {
       ]
     `);
   });
+  it("Shouldn't do anything if it's called without a parameter", () => {
+    const { result } = renderHook(() => useStockQuote(null));
+    expect(result.current).toMatchInlineSnapshot(`
+      Array [
+        null,
+        null,
+        Object {
+          "hasError": false,
+          "isIdle": true,
+          "isLoading": false,
+        },
+      ]
+    `);
+  });
 });
