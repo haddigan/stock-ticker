@@ -20,8 +20,9 @@ export const SelectorList = ({
   ) : (
     <ul className={styles.selectorList}>
       {searchResults &&
-        searchResults.map(({ name, symbol }) => {
-          const handleSelectStock = () => onSelectStock(symbol);
+        searchResults.map((stock) => {
+          const { name, symbol } = stock;
+          const handleSelectStock = () => onSelectStock(stock);
           return (
             <SelectorListItem
               key={symbol}

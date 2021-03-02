@@ -3,8 +3,10 @@ import { useStockOverview, useStockQuote } from "../../hooks";
 
 export const StockDetails = ({
   symbol,
+  name,
   onRemoveStock,
 }: {
+  name: string;
   symbol: string;
   onRemoveStock: any;
 }) => {
@@ -21,8 +23,6 @@ export const StockDetails = ({
 
   const isLoading = isLoadingOverview && isLoadingQuote;
   const hasError = hasOverviewError && hasQuoteError;
-
-  const name = stockOverview && stockOverview["Name"];
 
   return (
     <>

@@ -1,19 +1,22 @@
 import { StockSelector } from "./components/StockSelector";
 import { StockDetails } from "./components/StockDetails";
+import { SearchResult } from "./types/searchResult.types";
 
 import styles from "./App.module.css";
 import { useState } from "react";
 
 function App() {
-  const [selectedStocks, setSelectedStocks] = useState<string[]>([]);
+  const [selectedStocks, setSelectedStocks] = useState<SearchResult[]>([]);
 
-  const handleSelectStock = (symbol: string) => {
-    setSelectedStocks((selected) => [...selected, symbol]);
+  const handleSelectStock = (stock: SearchResult) => {
+    setSelectedStocks((selected) => [...selected, stock]);
   };
 
   const handleRemoveStock = (symbol: string) => {
     setSelectedStocks((selected) => {
-      return selected.filter((chosenSymbol) => symbol !== chosenSymbol);
+      return selected.filter(
+        ({ symbol: chosenSymbol }) => symbol !== chosenSymbol
+      );
     });
   };
 
@@ -25,12 +28,13 @@ function App() {
         onSelectStock={handleSelectStock}
       />
       <section className={styles.comparisonList}>
-        {selectedStocks.map((symbol) => {
+        {selectedStocks.map(({ symbol, name }) => {
           const handleRemove = () => handleRemoveStock(symbol);
           return (
             <StockDetails
               key={symbol}
               symbol={symbol}
+              name={name}
               onRemoveStock={handleRemove}
             />
           );

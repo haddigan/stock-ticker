@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDebounce, useSearch } from "../../hooks";
 import { SelectorList } from "./SelectorList";
+import { SearchResult } from "../../types/searchResult.types";
 
 import styles from "./StockSelector.module.css";
 
 type StockSelectorProps = {
-  onSelectStock: (symbol: string) => void;
+  onSelectStock: (stock: SearchResult) => void;
   disabled?: boolean;
 };
 
@@ -18,8 +19,8 @@ export const StockSelector = ({
 
   const [searchResults] = useSearch(debouncedQuery);
 
-  const handleSelectStock = (symbol: string): void => {
-    onSelectStock(symbol);
+  const handleSelectStock = (stock: SearchResult): void => {
+    onSelectStock(stock);
     setSearchQuery("");
   };
 
