@@ -1,15 +1,17 @@
 import { StockDetailsView } from "./StockDetailsView";
 import { useStockOverview, useStockQuote } from "../../hooks";
 
+type StockDetailsProps = {
+  name: string;
+  symbol: string;
+  onRemoveStock: any;
+};
+
 export const StockDetails = ({
   symbol,
   name,
   onRemoveStock,
-}: {
-  name: string;
-  symbol: string;
-  onRemoveStock: any;
-}) => {
+}: StockDetailsProps) => {
   const [stockOverview, , stockOverviewStatus] = useStockOverview(symbol);
   const [stockQuote, , stockQuoteStatus] = useStockQuote(symbol);
   const {
@@ -23,12 +25,13 @@ export const StockDetails = ({
 
   const isLoading = isLoadingOverview && isLoadingQuote;
   const hasError = hasOverviewError && hasQuoteError;
+  const shouldRenderStock = Boolean(stockQuote) && !isLoading && !hasError;
 
   return (
     <>
       {isLoading && <div>Loading...</div>}
       {hasError && <div>Error</div>}
-      {!isLoading && !hasError && (
+      {shouldRenderStock && (
         <StockDetailsView
           symbol={symbol}
           name={name}

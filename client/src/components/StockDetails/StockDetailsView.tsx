@@ -4,7 +4,7 @@ import styles from "./StockDetails.module.css";
 type StockDetailsViewProps = {
   symbol: string;
   name: string;
-  quote: Quote;
+  quote: Quote | null;
   onRemoveStock: any;
 };
 
@@ -13,7 +13,9 @@ export const StockDetailsView = ({
   quote,
   onRemoveStock,
 }: StockDetailsViewProps) => {
-  const { highPrice, lowPrice, changePercent, price } = quote || {};
+  if (!quote) return null;
+
+  const { highPrice, lowPrice, changePercent, price } = quote;
 
   return (
     <section className={styles.stockDetails}>
