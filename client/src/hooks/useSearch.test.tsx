@@ -21,6 +21,8 @@ const mockFetchError = (error: Error) => {
   global.fetch = jest.fn().mockImplementation(() => Promise.reject(error));
 };
 
+// TS has trouble resolving this as a mocked module and so it complains that
+// it can't find properties like "mockClear".
 const mockFetchCleanUp = () => {
   // @ts-ignore
   global.fetch.mockClear();

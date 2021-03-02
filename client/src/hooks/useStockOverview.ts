@@ -5,9 +5,9 @@ const URI = `${process.env.REACT_APP_API_URI}`;
 
 export const useStockOverview = (
   symbol: string
-): [any, Error | null, RequestStatus] => {
+): [any, string | null, RequestStatus] => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [isIdle, setIsIdle] = useState(true);
   const [response, setResponse] = useState(null);
 

@@ -6,11 +6,11 @@ const URI = `${process.env.REACT_APP_API_URI}`;
 
 type UseStockQuote = (
   symbol: string
-) => [Quote | null, Error | null, RequestStatus];
+) => [Quote | null, string | null, RequestStatus];
 
 export const useStockQuote: UseStockQuote = (symbol) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [isIdle, setIsIdle] = useState(true);
   const [response, setResponse] = useState<any>(null);
 
@@ -26,7 +26,7 @@ export const useStockQuote: UseStockQuote = (symbol) => {
         setIsLoading(false);
         setIsIdle(true);
       } catch (err) {
-        setError(err.message);
+        setError(err.message as string);
         setIsLoading(false);
         setIsIdle(true);
       }

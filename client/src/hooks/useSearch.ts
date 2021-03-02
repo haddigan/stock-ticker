@@ -6,11 +6,11 @@ const URI = `${process.env.REACT_APP_API_URI}`;
 
 type UseSearch = (
   term: string
-) => [SearchResult[] | null, Error | null, RequestStatus];
+) => [SearchResult[] | null, string | null, RequestStatus];
 
 export const useSearch: UseSearch = (term) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [isIdle, setIsIdle] = useState(true);
   const [response, setResponse] = useState<SearchResult[] | null>(null);
 
