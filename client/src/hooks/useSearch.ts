@@ -15,7 +15,7 @@ export const useSearch: UseSearch = (term) => {
   const [response, setResponse] = useState<SearchResult[] | null>(null);
 
   useEffect(() => {
-    if (!term) setResponse(null);
+    if (!term) return setResponse(null);
     const getApi = async () => {
       setIsIdle(false);
       setIsLoading(true);

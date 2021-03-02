@@ -75,4 +75,18 @@ describe("useSearch Hook", () => {
       ]
     `);
   });
+  it("Should null out list of results when called with empty parameter", async () => {
+    const { result } = renderHook(() => useSearch(""));
+    expect(result.current).toMatchInlineSnapshot(`
+      Array [
+        null,
+        null,
+        Object {
+          "hasError": false,
+          "isIdle": true,
+          "isLoading": false,
+        },
+      ]
+    `);
+  });
 });
