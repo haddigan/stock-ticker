@@ -22,9 +22,13 @@ export const useStockQuote: UseStockQuote = (symbol) => {
       try {
         const result = await fetch(`${URI}/quote/${symbol}`);
         const json = await result.json();
-        setResponse(json);
-        setIsLoading(false);
-        setIsIdle(true);
+        if (result.status === 200) {
+          setResponse(json);
+          setIsLoading(false);
+          setIsIdle(true);
+        } else {
+          throw new Error("Something went wrong");
+        }
       } catch (err) {
         setError(err.message as string);
         setIsLoading(false);

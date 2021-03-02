@@ -12,8 +12,12 @@ export const StockDetails = ({
   name,
   onRemoveStock,
 }: StockDetailsProps) => {
-  const [stockOverview, , stockOverviewStatus] = useStockOverview(symbol);
-  const [stockQuote, , stockQuoteStatus] = useStockQuote(symbol);
+  const [
+    stockOverview,
+    stockOverviewError,
+    stockOverviewStatus,
+  ] = useStockOverview(symbol);
+  const [stockQuote, stockQuoteError, stockQuoteStatus] = useStockQuote(symbol);
   const {
     isLoading: isLoadingOverview,
     hasError: hasOverviewError,
@@ -30,7 +34,8 @@ export const StockDetails = ({
   return (
     <>
       {isLoading && <div>Loading...</div>}
-      {hasError && <div>Error</div>}
+      {hasOverviewError && <div>{stockOverviewError}</div>}
+      {hasQuoteError && <div>{stockQuoteError}</div>}
       {shouldRenderStock && (
         <StockDetailsView
           symbol={symbol}

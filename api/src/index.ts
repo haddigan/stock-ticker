@@ -25,7 +25,7 @@ router.get("/search/:term", async (req, res) => {
     const formattedResponse = formatSearchResults(rawResponse.bestMatches);
     res.json(formattedResponse);
   } catch (err) {
-    res.json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -37,7 +37,7 @@ router.get("/overview/:symbol", async (req, res) => {
     const response = await makeApiRequest(OVERVIEW, symbol);
     res.json(response);
   } catch (err) {
-    res.json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -50,7 +50,7 @@ router.get("/quote/:symbol", async (req, res) => {
     const formattedResponse = formatQuoteResults(rawResponse[GLOBAL_QUOTE_KEY]);
     res.json(formattedResponse);
   } catch (err) {
-    res.json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 });
 

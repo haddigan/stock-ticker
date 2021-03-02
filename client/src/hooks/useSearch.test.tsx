@@ -12,6 +12,7 @@ const searchMock = [
 const mockFetch = (mockData: any) => {
   global.fetch = jest.fn().mockImplementation(() => {
     return Promise.resolve({
+      status: 200,
       json: () => Promise.resolve(mockData),
     });
   });

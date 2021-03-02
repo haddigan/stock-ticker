@@ -13,6 +13,7 @@ const quoteMock = {
 const mockFetch = (mockData: any) => {
   global.fetch = jest.fn().mockImplementation(() => {
     return Promise.resolve({
+      status: 200,
       json: () => Promise.resolve(mockData),
     });
   }) as jest.Mock;
@@ -31,7 +32,7 @@ const mockFetchCleanUp = () => {
   delete global.fetch;
 };
 
-describe("useQuote Hook", () => {
+describe("useStockQuote Hook", () => {
   beforeEach(() => mockFetch(quoteMock));
   afterEach(() => mockFetchCleanUp());
 
