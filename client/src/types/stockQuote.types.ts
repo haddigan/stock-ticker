@@ -1,7 +1,7 @@
 export interface Quote {
   price: string;
-  open: string;
-  high: string;
-  low: string;
+  openPrice: string;
+  highPrice: string;
+  lowPrice: string;
   changePercent: string;
 }

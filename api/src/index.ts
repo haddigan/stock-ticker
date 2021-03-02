@@ -1,9 +1,15 @@
 import express from "express";
 import cors from "cors";
 
-import { SYMBOL_SEARCH, GLOBAL_QUOTE, OVERVIEW } from "./app/constants";
+import {
+  SYMBOL_SEARCH,
+  GLOBAL_QUOTE,
+  OVERVIEW,
+  GLOBAL_QUOTE_KEY,
+} from "./app/constants";
 import { makeApiRequest } from "./app/makeApiRequest";
 import { formatSearchResults } from "./app/formatSearchResults";
+import { formatQuoteResults } from "./app/formatQuoteResults";
 
 const PORT = 3001;
 const app = express();
@@ -40,8 +46,9 @@ router.get("/quote/:symbol", async (req, res) => {
   const symbol = req.params.symbol;
 
   try {
-    const response = await makeApiRequest(GLOBAL_QUOTE, symbol);
-    res.json(response);
+    const rawResponse = await makeApiRequest(GLOBAL_QUOTE, symbol);
+    const formattedResponse = formatQuoteResults(rawResponse[GLOBAL_QUOTE_KEY]);
+    res.json(formattedResponse);
   } catch (err) {
     res.json({ error: err.message });
   }
