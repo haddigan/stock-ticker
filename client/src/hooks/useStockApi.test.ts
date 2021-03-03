@@ -4,20 +4,6 @@ import { useStockApi } from "./useStockApi";
 
 import quote from "../mock/quote.json";
 
-const envVars = process.env;
-
-beforeAll(() => {
-  process.env.REACT_APP_API_URI = "http://localhost:4000/api";
-});
-
-afterAll(() => {
-  process.env = envVars;
-});
-
-afterEach(() => {
-  fetchMock.restore();
-});
-
 it("returns a response from the api", async () => {
   fetchMock.mock("http://localhost:4000/api/quote/BB", quote);
   const { result, waitForNextUpdate } = renderHook(() =>
