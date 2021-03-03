@@ -15,8 +15,11 @@ export const StockSelector = ({
 }) => {
   const [queryValue, setQueryValue] = useState("");
 
-  const debouncedQuery = useDebounce(queryValue, 500);
-  const [searchResults] = useStockApi("search", debouncedQuery);
+  const debouncedQuery = useDebounce(queryValue, 250);
+  const [searchResults, , { isLoading, hasError }] = useStockApi(
+    "search",
+    debouncedQuery
+  );
 
   const renderOptionList = (list: SearchResult[]) => {
     if (!list) return null;
@@ -42,6 +45,10 @@ export const StockSelector = ({
         value={queryValue}
         onChange={(value) => setQueryValue(value)}
       />
+      {isLoading && (!searchResults || searchResults.length < 1) && (
+        <div>Loading...</div>
+      )}
+      {hasError && <div>Something went wrong. Please try again</div>}
       {queryValue && (
         <StockSelectorList>
           {renderOptionList(searchResults || null)}

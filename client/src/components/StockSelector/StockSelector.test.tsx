@@ -53,9 +53,47 @@ describe("StockSelector component", () => {
     expect(selectStockHandler).toBeCalled();
   });
 
-  it.todo("renders a loading state");
+  it("renders a loading state", async () => {
+    fetchMock.mock("http://localhost:4000/api/search/BB", searchResults);
 
-  it.todo("closes once an option is selected");
+    render(<StockSelector onSelectStock={jest.fn()} />);
 
-  it.todo("renders an error state");
+    fireEvent.change(screen.getByLabelText(/enter up to three stocks/i), {
+      target: { value: "BB" },
+    });
+
+    const loading = await waitFor(() => screen.getByText(/loading/i));
+  });
+
+  it("closes once an option is selected", async () => {
+    fetchMock.mock("http://localhost:4000/api/search/BB", searchResults);
+
+    render(<StockSelector onSelectStock={jest.fn()} />);
+
+    fireEvent.change(screen.getByLabelText(/enter up to three stocks/i), {
+      target: { value: "BB" },
+    });
+
+    const searchResult = await waitFor(() =>
+      screen.getByText(/bb - blackberry ltd/i)
+    );
+
+    fireEvent.click(searchResult);
+
+    expect(searchResult).not.toBeInTheDocument();
+  });
+
+  it("renders an error state", async () => {
+    fetchMock.mock("http://localhost:4000/api/search/BB", 500);
+
+    render(<StockSelector onSelectStock={jest.fn()} />);
+
+    fireEvent.change(screen.getByLabelText(/enter up to three stocks/i), {
+      target: { value: "BB" },
+    });
+
+    const errorText = await waitFor(() =>
+      screen.getByText(/something went wrong/i)
+    );
+  });
 });

@@ -25,6 +25,8 @@
   right: 0;
   max-height: 12em;
   overflow-y: scroll;
+  z-index: 1;
+  border: 1px solid lightgray;
 }
 
 .listItem {
