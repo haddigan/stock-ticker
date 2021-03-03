@@ -1,42 +1,52 @@
 [
   {
     "symbol": "BB",
-    "name": "BlackBerry Ltd"
+    "name": "BlackBerry Ltd",
+    "id": "YV36th-6tCBtTNba01zs_"
   },
   {
     "symbol": "BBAL",
-    "name": "New York Health Care Inc"
+    "name": "New York Health Care Inc",
+    "id": "sjRuXG24R7A7vtu8fpIbI"
   },
   {
     "symbol": "BB.PAR",
-    "name": "Société BIC SA"
+    "name": "Société BIC SA",
+    "id": "2qTsHiw6lrq42au311iVB"
   },
   {
     "symbol": "BB.TRT",
-    "name": "BlackBerry Limited"
+    "name": "BlackBerry Limited",
+    "id": "POhihAFX7K7DTaBtz4jiY"
   },
   {
     "symbol": "BB1.FRK",
-    "name": "Barrett Business Services"
+    "name": "Barrett Business Services",
+    "id": "rQ5K0l4rg-WRXYx71iDrT"
   },
   {
     "symbol": "BB2.FRK",
-    "name": "Burberry Group plc"
+    "name": "Burberry Group plc",
+    "id": "12k6PBUHGOmXKjli4Zuij"
   },
   {
     "symbol": "BB3.FRK",
-    "name": "Brookline Bancorp"
+    "name": "Brookline Bancorp",
+    "id": "978OQCNUzigQnInt1lrWa"
   },
   {
     "symbol": "BB4.FRK",
-    "name": "BofI Holding"
+    "name": "BofI Holding",
+    "id": "WlfT1ZzExjaI7wJTz-pRT"
   },
   {
     "symbol": "BBAGF",
-    "name": "BB Biotech AG"
+    "name": "BB Biotech AG",
+    "id": "8ECiwlNoEzSCX9q7r5FYb"
   },
   {
     "symbol": "BBAJF",
-    "name": "Banco del Bajio S.A. - Series O"
+    "name": "Banco del Bajio S.A. - Series O",
+    "id": "gDMgsViJFsShTbADuBnSy"
   }
 ]

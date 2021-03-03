@@ -8,6 +8,7 @@ import {
 import { StockDetails } from "./StockDetails";
 import fetchMock from "fetch-mock";
 import quote from "../../mock/quote.json";
+import overview from "../../mock/overview.json";
 
 it("renders stock information", async () => {
   fetchMock.mock("http://localhost:4000/api/quote/BB", quote);
@@ -76,4 +77,25 @@ it("shows an error state", async () => {
   await waitForElementToBeRemoved(screen.getByText(/loading/i));
 
   expect(screen.getByText(/something went wrong/i)).toBeInTheDocument();
+});
+
+it("Loads stock overview manually when user clicks the load more details button", async () => {
+  fetchMock.mock("http://localhost:4000/api/quote/BB", quote);
+  fetchMock.mock("http://localhost:4000/api/overview/BB", overview);
+
+  render(
+    <StockDetails name="Blackberry Inc" symbol="BB" onRemoveStock={jest.fn()} />
+  );
+
+  await waitForElementToBeRemoved(screen.getByText(/loading/i));
+
+  const button = screen.getByText(/load additional details/i);
+
+  fireEvent.click(button);
+
+  await waitForElementToBeRemoved(screen.getByText(/loading/i));
+
+  const overviewHeading = screen.getByText(/overview/i);
+
+  expect(overviewHeading).toBeInTheDocument();
 });
