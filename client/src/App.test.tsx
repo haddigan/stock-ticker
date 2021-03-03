@@ -40,12 +40,14 @@ it("shows up to three pinned stocks", async () => {
     {
       symbol: "AMC",
       name: "AMC Theatres",
+      id: "jdfsklfhs",
     },
   ]);
   fetchMock.mock("http://localhost:4000/api/search/gme", [
     {
       symbol: "GME",
       name: "Gamestop Inc",
+      id: "fjdsfhuifhdsl",
     },
   ]);
   fetchMock.mock("http://localhost:4000/api/quote/BB", quote);

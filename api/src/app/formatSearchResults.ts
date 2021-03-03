@@ -1,5 +1,6 @@
 import { FormattedSearchResult, ApiSearchResult } from "../types";
 import { SYMBOL_KEY, NAME_KEY } from "./constants";
+import { nanoid } from "nanoid";
 
 export const formatSearchResults = (
   matches: ApiSearchResult[]
@@ -7,6 +8,7 @@ export const formatSearchResults = (
   return matches.map((match) => {
     const symbol = match[SYMBOL_KEY];
     const name = match[NAME_KEY];
-    return { symbol, name };
+    const id = nanoid();
+    return { symbol, name, id };
   });
 };

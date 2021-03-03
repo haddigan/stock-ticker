@@ -15,6 +15,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "nanoid": "^3.1.20",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

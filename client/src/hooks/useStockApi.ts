@@ -16,6 +16,7 @@ export function useStockApi(
   useEffect(() => {
     if (!param) return setResponse(null);
     const getApi = async () => {
+      setError(null);
       setIsIdle(false);
       setIsLoading(true);
       try {

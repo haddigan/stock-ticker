@@ -13,6 +13,7 @@ export type ApiFunction =
 export interface FormattedSearchResult {
   symbol: string;
   name: string;
+  id: string;
 }
 
 export interface FormattedQuote {

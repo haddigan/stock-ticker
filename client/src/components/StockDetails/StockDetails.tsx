@@ -1,5 +1,6 @@
 import { StockHeading } from "./StockHeading";
 import { StockQuote } from "./StockQuote";
+import { StockOverview } from "./StockOverview";
 import styles from "./StockDetails.module.css";
 
 type StockDetailsProps = {
@@ -18,6 +19,7 @@ export const StockDetails = ({
       <div className={styles.content}>
         <StockHeading name={name} symbol={symbol} />
         <StockQuote symbol={symbol} />
+        <StockOverview symbol={symbol} />
       </div>
       <div className={styles.closeButton}>
         <button onClick={onRemoveStock}>

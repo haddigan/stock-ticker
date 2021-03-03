@@ -23,14 +23,14 @@ export const StockSelector = ({
 
   const renderOptionList = (list: SearchResult[]) => {
     if (!list) return null;
-    return list.map(({ name, symbol }) => {
+    return list.map(({ name, symbol, id }) => {
       const handleSelect = () => {
         setQueryValue("");
-        handleSelectStock({ name, symbol });
+        handleSelectStock({ name, symbol, id });
       };
       return (
         <StockSelectorOption
-          key={symbol}
+          key={id}
           name={name}
           symbol={symbol}
           onClick={handleSelect}

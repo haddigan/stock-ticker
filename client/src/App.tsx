@@ -12,20 +12,18 @@ function App() {
     setSelectedStocks((selected) => [...selected, stock]);
   };
 
-  const handleRemoveStock = (symbol: string) => {
+  const handleRemoveStock = (id: string) => {
     setSelectedStocks((selected) => {
-      return selected.filter(
-        ({ symbol: chosenSymbol }) => symbol !== chosenSymbol
-      );
+      return selected.filter(({ id: chosenId }) => id !== chosenId);
     });
   };
 
   const renderPinnedStocks = (stocks: SearchResult[]) => {
-    return stocks.map(({ symbol, name }) => {
-      const handleRemove = () => handleRemoveStock(symbol);
+    return stocks.map(({ symbol, name, id }) => {
+      const handleRemove = () => handleRemoveStock(id);
       return (
         <StockDetails
-          key={symbol}
+          key={id}
           symbol={symbol}
           name={name}
           onRemoveStock={handleRemove}
