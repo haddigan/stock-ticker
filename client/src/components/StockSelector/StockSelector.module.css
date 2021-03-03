@@ -1,5 +1,6 @@
 .base {
   position: relative;
+  margin: 1em;
 }
 
 .label {

@@ -21,7 +21,7 @@ function App() {
   };
   const showStockSelector = selectedStocks.length < 3;
   return (
-    <main>
+    <main className={styles.app}>
       <h1>Stock Comparison</h1>
       {showStockSelector && <StockSelector onSelectStock={handleSelectStock} />}
       <section className={styles.comparisonList}>
