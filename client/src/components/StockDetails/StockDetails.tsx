@@ -20,7 +20,9 @@ export const StockDetails = ({
         <StockQuote symbol={symbol} />
       </div>
       <div className={styles.closeButton}>
-        <button onClick={onRemoveStock}>❌</button>
+        <button onClick={onRemoveStock}>
+          <i>❌</i>
+        </button>
       </div>
     </section>
   );
