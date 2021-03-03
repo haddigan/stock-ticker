@@ -24,6 +24,15 @@ export interface FormattedQuote {
   changePercent: string;
 }
 
+export interface FormattedOverview {
+  symbol: string;
+  sector: string;
+  industry: string;
+  marketCap: string;
+  EPS: string;
+  profitMargin: string;
+}
+
 export interface ApiSearchResult {
   "1. symbol": string;
   "2. name": string;
@@ -47,6 +56,67 @@ export interface ApiQuoteResult {
   "08. previous close": string;
   "09. change": string;
   "10. change percent": string;
+}
+
+export interface ApiOverviewResult {
+  Symbol: string;
+  AssetType: string;
+  Description: string;
+  Exchange: string;
+  Currency: string;
+  Country: string;
+  Sector: string;
+  Industry: string;
+  Address: string;
+  FullTimeEmployees: string;
+  FiscalYearEnd: string;
+  LatestQuarter: string;
+  MarketCapitalization: string;
+  EBITDA: string;
+  PERatio: string;
+  PEGRatio: string;
+  BookValue: string;
+  DividendPerShare: string;
+  DividendYield: string;
+  EPS: string;
+  RevenuePerShareTTM: string;
+  ProfitMargin: string;
+  OperatingMarginTTM: string;
+  ReturnOnAssetsTTM: string;
+  ReturnOnEquityTTM: string;
+  RevenueTTM: string;
+  GrossProfitTTM: string;
+  DilutedEPSTTM: string;
+  QuarterlyEarningsGrowthYOY: string;
+  QuarterlyRevenueGrowthYOY: string;
+  AnalystTargetPrice: string;
+  TrailingPE: string;
+  ForwardPE: string;
+  PriceToSalesRatioTTM: string;
+  PriceToBookRatio: string;
+  EVToRevenue: string;
+  EVToEBITDA: string;
+  Beta: string;
+  "52WeekHigh": string;
+  "52WeekLow": string;
+  "50DayMovingAverage": string;
+  "200DayMovingAverage": string;
+  SharesOutstanding: string;
+  SharesFloat: string;
+  SharesShort: string;
+  SharesShortPriorMonth: string;
+  ShortRatio: string;
+  ShortPercentOutstanding: string;
+  ShortPercentFloat: string;
+  PercentInsiders: string;
+  PercentInstitutions: string;
+  ForwardAnnualDividendRate: string;
+  ForwardAnnualDividendYield: string;
+  PayoutRatio: string;
+  DividendDate: string;
+  ExDividendDate: string;
+  LastSplitFactor: string;
+  LastSplitDate: string;
 }
 
 export interface ApiQuoteResults {

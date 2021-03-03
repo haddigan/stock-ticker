@@ -16,3 +16,10 @@ export const STOCK_HIGH_KEY = "03. high";
 export const STOCK_LOW_KEY = "04. low";
 export const STOCK_PRICE_KEY = "05. price";
 export const STOCK_CHANGE_PERCENT_KEY = "10. change percent";
+
+export const OVERVIEW_SYMBOL_KEY = "Symbol";
+export const OVERVIEW_SECTOR_KEY = "Sector";
+export const OVERVIEW_INDUSTRY_KEY = "Industry";
+export const OVERVIEW_MARKET_CAP_KEY = "MarketCapitalization";
+export const OVERVIEW_EPS_KEY = "EPS";
+export const OVERVIEW_PROFIT_MARGIN_KEY = "ProfitMargin";

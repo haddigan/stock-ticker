@@ -10,6 +10,7 @@ import {
 import { makeApiRequest } from "./app/makeApiRequest";
 import { formatSearchResults } from "./app/formatSearchResults";
 import { formatQuoteResults } from "./app/formatQuoteResults";
+import { formatOverviewResults } from "./app/formatOverviewResults";
 
 const PORT = 3001;
 const app = express();
@@ -25,7 +26,7 @@ router.get("/search/:term", async (req, res) => {
     const formattedResponse = formatSearchResults(rawResponse.bestMatches);
     res.json(formattedResponse);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.sendStatus(500);
   }
 });
 
@@ -35,9 +36,10 @@ router.get("/overview/:symbol", async (req, res) => {
 
   try {
     const response = await makeApiRequest(OVERVIEW, symbol);
-    res.json(response);
+    const formattedResponse = formatOverviewResults(response);
+    res.json(formattedResponse);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.sendStatus(500);
   }
 });
 
@@ -50,7 +52,7 @@ router.get("/quote/:symbol", async (req, res) => {
     const formattedResponse = formatQuoteResults(rawResponse[GLOBAL_QUOTE_KEY]);
     res.json(formattedResponse);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.sendStatus(500);
   }
 });
 
