@@ -19,14 +19,11 @@ function App() {
       );
     });
   };
-
+  const showStockSelector = selectedStocks.length < 3;
   return (
     <main>
       <h1>Stock Comparison</h1>
-      <StockSelector
-        disabled={selectedStocks.length === 3}
-        onSelectStock={handleSelectStock}
-      />
+      {showStockSelector && <StockSelector onSelectStock={handleSelectStock} />}
       <section className={styles.comparisonList}>
         {selectedStocks.map(({ symbol, name }) => {
           const handleRemove = () => handleRemoveStock(symbol);

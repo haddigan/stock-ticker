@@ -1,44 +1,51 @@
 import { useState } from "react";
+import { StockSelectorInput } from "./StockSelectorInput";
+import { StockSelectorList } from "./StockSelectorList";
+import { StockSelectorOption } from "./StockSelectorOption";
+
 import { useDebounce, useStockApi } from "../../hooks";
-import { SelectorList } from "./SelectorList";
+
+import classes from "./StockSelector.module.css";
 import { SearchResult } from "../../types/searchResult.types";
 
-import styles from "./StockSelector.module.css";
-
-type StockSelectorProps = {
-  onSelectStock: (stock: SearchResult) => void;
-  disabled?: boolean;
-};
-
 export const StockSelector = ({
-  onSelectStock,
-  disabled = false,
-}: StockSelectorProps) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const debouncedQuery = useDebounce<string>(searchQuery, 500);
+  onSelectStock: handleSelectStock,
+}: {
+  onSelectStock: (selectedStock: SearchResult) => void;
+}) => {
+  const [queryValue, setQueryValue] = useState("");
 
+  const debouncedQuery = useDebounce(queryValue, 500);
   const [searchResults] = useStockApi("search", debouncedQuery);
 
-  const handleSelectStock = (stock: SearchResult): void => {
-    onSelectStock(stock);
-    setSearchQuery("");
+  const renderOptionList = (list: SearchResult[]) => {
+    if (!list) return null;
+    return list.map(({ name, symbol }) => {
+      const handleSelect = () => {
+        setQueryValue("");
+        handleSelectStock({ name, symbol });
+      };
+      return (
+        <StockSelectorOption
+          key={symbol}
+          name={name}
+          symbol={symbol}
+          onClick={handleSelect}
+        />
+      );
+    });
   };
 
   return (
-    <div className={styles.stockSelector}>
-      <input
-        className={styles.selectorInput}
-        type="text"
-        onChange={(e) => setSearchQuery(e.target.value)}
-        value={searchQuery}
-        placeholder="Search by company name or symbol"
-        disabled={disabled}
+    <div className={classes.base}>
+      <StockSelectorInput
+        value={queryValue}
+        onChange={(value) => setQueryValue(value)}
       />
-      {searchQuery && searchResults && (
-        <SelectorList
-          searchResults={searchResults}
-          onSelectStock={handleSelectStock}
-        />
+      {queryValue && (
+        <StockSelectorList>
+          {renderOptionList(searchResults || null)}
+        </StockSelectorList>
       )}
     </div>
   );

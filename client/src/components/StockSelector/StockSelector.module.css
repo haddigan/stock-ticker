@@ -1,35 +1,45 @@
-.stockSelector {
-  margin: 1em;
-  padding: 0;
+.base {
   position: relative;
 }
-.selectorInput {
-  font-size: 1.1em;
-  width: 100%;
-  line-height: 1.1em;
-  padding: 0.5em;
+
+.label {
+  display: block;
 }
-.selectorList {
-  padding: 0;
-  margin: 0;
+
+.input {
+  font-size: 1.1em;
+  line-height: 1.1em;
+  width: 100%;
+  padding: 0.5em;
   border: 1px solid lightgray;
-  list-style: none;
-  max-height: 12em;
-  overflow-y: scroll;
+}
+
+.list {
+  display: block;
   position: absolute;
+  background-color: lightgrey;
+  font-family: sans-serif;
+  font-size: 0.8rem;
   left: 0;
   right: 0;
+  max-height: 12em;
+  overflow-y: scroll;
 }
-.selectorListItem {
-  padding: 1em;
-  margin: 0;
+
+.listItem {
+  background-color: #bbb;
+  padding: 4px;
+  margin-bottom: 1px;
   cursor: pointer;
-  background-color: #fefefe;
+  padding: 1em;
   font-weight: 600;
+  background-color: #fefefe;
 }
-.selectorListItem:nth-of-type(even) {
+
+.listItem:nth-of-type(even) {
   background-color: #efefef;
 }
-.selectorListItem:hover {
+
+.listItem:hover {
   background-color: azure;
 }
