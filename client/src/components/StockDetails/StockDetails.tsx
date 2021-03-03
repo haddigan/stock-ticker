@@ -1,5 +1,5 @@
 import { StockDetailsView } from "./StockDetailsView";
-import { useStockOverview, useStockQuote } from "../../hooks";
+import { useStockApi } from "../../hooks";
 
 type StockDetailsProps = {
   name: string;
@@ -12,30 +12,14 @@ export const StockDetails = ({
   name,
   onRemoveStock,
 }: StockDetailsProps) => {
-  const [
-    stockOverview,
-    stockOverviewError,
-    stockOverviewStatus,
-  ] = useStockOverview(symbol);
-  const [stockQuote, stockQuoteError, stockQuoteStatus] = useStockQuote(symbol);
-  const {
-    isLoading: isLoadingOverview,
-    hasError: hasOverviewError,
-  } = stockOverviewStatus;
-  const {
-    isLoading: isLoadingQuote,
-    hasError: hasQuoteError,
-  } = stockQuoteStatus;
-
-  const isLoading = isLoadingOverview && isLoadingQuote;
-  const hasError = hasOverviewError && hasQuoteError;
+  const [stockQuote, error, status] = useStockApi("quote", symbol);
+  const { isLoading, hasError } = status;
   const shouldRenderStock = Boolean(stockQuote) && !isLoading && !hasError;
 
   return (
     <>
       {isLoading && <div>Loading...</div>}
-      {hasOverviewError && <div>{stockOverviewError}</div>}
-      {hasQuoteError && <div>{stockQuoteError}</div>}
+      {hasError && <div>{error}</div>}
       {shouldRenderStock && (
         <StockDetailsView
           symbol={symbol}

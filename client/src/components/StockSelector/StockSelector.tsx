@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDebounce, useSearch } from "../../hooks";
+import { useDebounce, useStockApi } from "../../hooks";
 import { SelectorList } from "./SelectorList";
 import { SearchResult } from "../../types/searchResult.types";
 
@@ -17,7 +17,7 @@ export const StockSelector = ({
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedQuery = useDebounce<string>(searchQuery, 500);
 
-  const [searchResults] = useSearch(debouncedQuery);
+  const [searchResults] = useStockApi("search", debouncedQuery);
 
   const handleSelectStock = (stock: SearchResult): void => {
     onSelectStock(stock);

@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
-import { SearchResult } from "../types/searchResult.types";
 import { RequestStatus } from "../types/requestStatus.types";
 
-const URI = `${process.env.REACT_APP_API_URI}`;
+type Operation = "overview" | "search" | "quote";
+type ErrorType = string | null;
 
-type UseSearch = (
-  term: string
-) => [SearchResult[] | null, string | null, RequestStatus];
-
-export const useSearch: UseSearch = (term) => {
+export function useStockApi(
+  operation: Operation,
+  param: string
+): [any, ErrorType, RequestStatus] {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<ErrorType>(null);
   const [isIdle, setIsIdle] = useState(true);
-  const [response, setResponse] = useState<SearchResult[] | null>(null);
+  const [response, setResponse] = useState(null);
 
   useEffect(() => {
-    if (!term) return setResponse(null);
+    if (!param) return setResponse(null);
     const getApi = async () => {
       setIsIdle(false);
       setIsLoading(true);
       try {
-        const result = await fetch(`${URI}/search/${term}`);
+        const endpoint = `${process.env.REACT_APP_API_URI}/${operation}/${param}`;
+        const result = await fetch(endpoint);
         const json = await result.json();
         if (result.status === 200) {
           setResponse(json);
@@ -36,7 +36,7 @@ export const useSearch: UseSearch = (term) => {
       }
     };
     getApi();
-  }, [term]);
+  }, [operation, param]);
 
   return [response, error, { isLoading, isIdle, hasError: Boolean(error) }];
-};
+}
