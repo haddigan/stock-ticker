@@ -23,12 +23,12 @@ jobs:
         working-directory: ./api
         run: npm test
       - name: Deploy
-        working-directory: ./api
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "stock-ticker-server"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          appdir: ./api
   deploy-client:
     runs-on: ubuntu-latest
     steps:
