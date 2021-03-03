@@ -14,18 +14,31 @@ export const StockQuote = ({ symbol }: { symbol: string }) => {
       {hasError && <LoadingError />}
       {showQuote && (
         <div>
-          <div>{price}</div>
-          <div className={isUp ? styles.positive : styles.negative}>
-            {changePercent}
+          <div className={styles.priceDisplay}>
+            <div className={styles.priceDetails}>
+              <div className={styles.stockPrice}>{price}</div>
+              <div className={isUp ? styles.positive : styles.negative}>
+                {changePercent}
+              </div>
+            </div>
+            <div className={styles.priceVisual}>
+              <i
+                className={`${styles.priceIcon} ${
+                  !isUp && styles.iconNegative
+                }`}
+              >
+                🚀
+              </i>
+            </div>
           </div>
           <h3>Stats</h3>
-          <dl>
-            <dt>Open:</dt>
-            <dd>{openPrice}</dd>
-            <dt>High:</dt>
-            <dd>{highPrice}</dd>
-            <dt>Low:</dt>
-            <dd>{lowPrice}</dd>
+          <dl className={styles.dataTable}>
+            <dt className={styles.term}>Open:</dt>
+            <dd className={styles.detail}>{openPrice}</dd>
+            <dt className={styles.term}>High:</dt>
+            <dd className={styles.detail}>{highPrice}</dd>
+            <dt className={styles.term}>Low:</dt>
+            <dd className={styles.detail}>{lowPrice}</dd>
           </dl>
         </div>
       )}

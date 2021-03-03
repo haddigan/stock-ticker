@@ -9,6 +9,10 @@
   border-left: 1px solid gray;
 }
 
+.heading2 {
+  margin-top: 0;
+}
+
 .content {
   flex-grow: 1;
 }
@@ -24,4 +28,40 @@
 
 .negative {
   color: red;
+}
+
+.dataTable {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.term {
+  font-weight: 600;
+  flex-basis: 20%;
+  margin-bottom: 0.5em;
+}
+
+.detail {
+  margin: 0;
+  flex-basis: 80%;
+  margin-bottom: 0.5em;
+}
+
+.stockPrice {
+  font-weight: 600;
+  font-size: 1.6em;
+}
+
+.priceDisplay {
+  display: flex;
+  align-items: center;
+}
+
+.priceIcon {
+  font-size: 3em;
+  display: inline-block;
+}
+
+.iconNegative {
+  transform: rotate(90deg);
 }
