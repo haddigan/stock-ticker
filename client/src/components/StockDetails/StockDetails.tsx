@@ -1,5 +1,6 @@
-import { StockDetailsView } from "./StockDetailsView";
-import { useStockApi } from "../../hooks";
+import { StockHeading } from "./StockHeading";
+import { StockQuote } from "./StockQuote";
+import styles from "./StockDetails.module.css";
 
 type StockDetailsProps = {
   name: string;
@@ -12,22 +13,15 @@ export const StockDetails = ({
   name,
   onRemoveStock,
 }: StockDetailsProps) => {
-  const [stockQuote, error, status] = useStockApi("quote", symbol);
-  const { isLoading, hasError } = status;
-  const shouldRenderStock = Boolean(stockQuote) && !isLoading && !hasError;
-
   return (
-    <>
-      {isLoading && <div>Loading...</div>}
-      {hasError && <div>{error}</div>}
-      {shouldRenderStock && (
-        <StockDetailsView
-          symbol={symbol}
-          name={name}
-          quote={stockQuote}
-          onRemoveStock={onRemoveStock}
-        />
-      )}
-    </>
+    <section className={styles.stockDetails}>
+      <div className={styles.content}>
+        <StockHeading name={name} symbol={symbol} />
+        <StockQuote symbol={symbol} />
+      </div>
+      <div className={styles.closeButton}>
+        <button onClick={onRemoveStock}>❌</button>
+      </div>
+    </section>
   );
 };

@@ -19,23 +19,29 @@ function App() {
       );
     });
   };
+
+  const renderPinnedStocks = (stocks: SearchResult[]) => {
+    return stocks.map(({ symbol, name }) => {
+      const handleRemove = () => handleRemoveStock(symbol);
+      return (
+        <StockDetails
+          key={symbol}
+          symbol={symbol}
+          name={name}
+          onRemoveStock={handleRemove}
+        />
+      );
+    });
+  };
+
   const showStockSelector = selectedStocks.length < 3;
+
   return (
     <main className={styles.app}>
       <h1>Stock Comparison</h1>
       {showStockSelector && <StockSelector onSelectStock={handleSelectStock} />}
       <section className={styles.comparisonList}>
-        {selectedStocks.map(({ symbol, name }) => {
-          const handleRemove = () => handleRemoveStock(symbol);
-          return (
-            <StockDetails
-              key={symbol}
-              symbol={symbol}
-              name={name}
-              onRemoveStock={handleRemove}
-            />
-          );
-        })}
+        {renderPinnedStocks(selectedStocks)}
       </section>
     </main>
   );
