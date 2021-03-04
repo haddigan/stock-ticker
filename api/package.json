@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && export NODE_ENV=production && node ./lib/index.js",
+    "start": "npm install && npm run build && export NODE_ENV=production && node ./lib/index.js",
     "dev": "env-cmd -f ../.env.development.local nodemon ./src/index.ts",
     "build": "tsc --project ./",
     "test": "jest"
