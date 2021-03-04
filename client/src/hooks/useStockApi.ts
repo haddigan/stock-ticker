@@ -31,6 +31,7 @@ export function useStockApi(
           throw new Error("Something went wrong");
         }
       } catch (err) {
+        setResponse(null);
         setError(err.message);
         setIsLoading(false);
         setIsIdle(true);
