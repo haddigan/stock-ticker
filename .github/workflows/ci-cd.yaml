@@ -44,6 +44,8 @@ jobs:
       - name: Build
         working-directory: ./client
         run: npm run build
+        env:
+          REACT_APP_API_URI: https://stock-ticker-server.herokuapp.com/api
       - name: Test
         working-directory: ./client
         run: npm test
@@ -54,4 +56,3 @@ jobs:
           build_dir: ./client/build
         env:
           GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
-          REACT_APP_API_URI: https://stock-ticker-server.herokuapp.com/api
