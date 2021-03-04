@@ -24,7 +24,7 @@ yarn
 yarn start
 ```
 
-This will run the client and server apps in parallel. Note that there are required environmental variables that need to be set. See `.env.sample` for details. An alphavantage API key is required to run locally, you can get one here: https://www.alphavantage.co/support/#support
+This will run the client and server apps in parallel. Note that there are required environmental variables that need to be set. For local development, you can use one `.env.development.local` file in the project root, in dev mode this will be consumed by both the client and server apps. See `.env.development.local.sample` for details. An alphavantage API key is required to run locally, you can get one here: https://www.alphavantage.co/support/#support
 
 ## API Rate Limit
 
