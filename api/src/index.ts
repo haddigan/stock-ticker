@@ -12,7 +12,7 @@ import { formatSearchResults } from "./app/formatSearchResults";
 import { formatQuoteResults } from "./app/formatQuoteResults";
 import { formatOverviewResults } from "./app/formatOverviewResults";
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3000;
 const app = express();
 const router = express.Router();
 
