@@ -6,8 +6,10 @@
   "scripts": {
     "start:client": "cd client && npm start",
     "start:server": "cd api && npm run dev",
+    "test:client": "cd client && CI=true npm test",
+    "test:server": "cd api && CI=true npm test",
     "start": "run-p start:**",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "run-s test:**"
   },
   "repository": {
     "type": "git",
