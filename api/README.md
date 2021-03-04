@@ -1,13 +1,13 @@
-# Stock Ticker Client
+# Stock Ticker Server
 
 Run locally
 
 ```js
 npm i
-npm start
+npm run dev
 ```
 
-Run the test suite
+Run test suite
 
 ```js
 npm test
