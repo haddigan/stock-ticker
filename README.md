@@ -25,3 +25,7 @@ yarn start
 ```
 
 This will run the client and server apps in parallel. Note that there are required environmental variables that need to be set. See `.env.sample` for details. An alphavantage API key is required to run locally, you can get one here: https://www.alphavantage.co/support/#support
+
+## API Rate Limit
+
+Unfortunately the API only allows 5 requests per minute. When the API hits the rate limit it will start returning 500 errors until the window resets.
