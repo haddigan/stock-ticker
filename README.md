@@ -28,4 +28,4 @@ This will run the client and server apps in parallel. Note that there are requir
 
 ## API Rate Limit
 
-Unfortunately the API only allows 5 requests per minute. When the API hits the rate limit it will start returning 500 errors until the window resets.
+Unfortunately the API only allows 5 requests per minute. When the API hits the rate limit it will start returning 500 errors until the timeout window resets.
