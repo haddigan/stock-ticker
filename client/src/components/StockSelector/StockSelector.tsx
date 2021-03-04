@@ -48,7 +48,9 @@ export const StockSelector = ({
       {isLoading && (!searchResults || searchResults.length < 1) && (
         <div>Loading...</div>
       )}
-      {hasError && <div>Something went wrong. Please try again</div>}
+      {hasError && (
+        <div>Something went wrong. Please wait a few moments and try again</div>
+      )}
       {queryValue && (
         <StockSelectorList>
           {renderOptionList(searchResults || null)}
