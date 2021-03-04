@@ -1,5 +1,7 @@
 import { formatSearchResults } from "./formatSearchResults";
 
+jest.mock("nanoid", () => ({ nanoid: jest.fn().mockReturnValue("id-001") }));
+
 const input = [
   {
     "1. symbol": "AMC",
@@ -26,10 +28,15 @@ const input = [
 ];
 
 const output = [
-  { symbol: "AMC", name: "AMC Entertainment Holdings Inc - Class A" },
+  {
+    symbol: "AMC",
+    name: "AMC Entertainment Holdings Inc - Class A",
+    id: "id-001",
+  },
   {
     symbol: "AMCA",
     name: "iShares Russell 1000 Pure U.S. Revenue ETF",
+    id: "id-001",
   },
 ];
 
