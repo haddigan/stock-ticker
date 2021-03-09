@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/stock-ticker/static/css/main.11ebbd55.chunk.css",
+    "main.js": "/stock-ticker/static/js/main.514d310d.chunk.js",
+    "main.js.map": "/stock-ticker/static/js/main.514d310d.chunk.js.map",
+    "runtime-main.js": "/stock-ticker/static/js/runtime-main.6ac5ed9a.js",
+    "runtime-main.js.map": "/stock-ticker/static/js/runtime-main.6ac5ed9a.js.map",
+    "static/js/2.169c723f.chunk.js": "/stock-ticker/static/js/2.169c723f.chunk.js",
+    "static/js/2.169c723f.chunk.js.map": "/stock-ticker/static/js/2.169c723f.chunk.js.map",
+    "static/js/3.b837f052.chunk.js": "/stock-ticker/static/js/3.b837f052.chunk.js",
+    "static/js/3.b837f052.chunk.js.map": "/stock-ticker/static/js/3.b837f052.chunk.js.map",
+    "index.html": "/stock-ticker/index.html",
+    "static/css/main.11ebbd55.chunk.css.map": "/stock-ticker/static/css/main.11ebbd55.chunk.css.map",
+    "static/js/2.169c723f.chunk.js.LICENSE.txt": "/stock-ticker/static/js/2.169c723f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6ac5ed9a.js",
+    "static/js/2.169c723f.chunk.js",
+    "static/css/main.11ebbd55.chunk.css",
+    "static/js/main.514d310d.chunk.js"
+  ]
+}
