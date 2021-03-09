@@ -14,6 +14,8 @@ NPM:
 
 ```sh
 npm i
+cp .env.development.local.sample .env.development.local
+# Edit .env.development.local to add your API key
 npm start
 ```
 
@@ -21,10 +23,14 @@ Yarn:
 
 ```sh
 yarn
+cp .env.development.local.sample .env.development.local
+# Edit .env.development.local to add your API key
 yarn start
 ```
 
-This will run the client and server apps in parallel. Note that there are required environmental variables that need to be set. For local development, you can use one `.env.development.local` file in the project root, in dev mode this will be consumed by both the client and server apps. See `.env.development.local.sample` for details. An alphavantage API key is required to run locally, you can get one here: https://www.alphavantage.co/support/#support
+This will run the client and server apps in parallel. Note that there are required environmental variables that need to be set. For local development, you should use one `.env.development.local` file in the project root. In dev mode this will be consumed by both the client and server apps. See `.env.development.local.sample` for details. (Make sure that the `PORT` variable matches the port in the `REACT_APP_API_URI` url).
+
+**An alphavantage API key is required to run locally, and must be included in the environment variables. You can get one here: https://www.alphavantage.co/support/#support**
 
 ## API Rate Limit
 

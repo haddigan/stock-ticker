@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install:server": "cd api && npm install",
+    "install:client": "cd client && npm install",
+    "install": "run-p install:**",
     "start:client": "cd client && npm start",
     "start:server": "cd api && npm run dev",
     "test:client": "cd client && CI=true npm test",
